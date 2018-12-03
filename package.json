@@ -1,0 +1,41 @@
+{
+  "name": "leprobot",
+  "version": "2.0.0",
+  "description": "Leprobot Node Js Implementation",
+  "main": "index.js",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "colors": "^1.3.2",
+    "dotenv": "^6.1.0",
+    "mime-types": "^2.1.21",
+    "mmmagic": "^0.5.2",
+    "node-telegram-bot-api": "^0.30.0",
+    "optimist": "^0.6.1",
+    "random-js": "^1.0.8",
+    "random-vagina": "^1.0.0",
+    "request": "^2.88.0",
+    "semver": "^5.6.0",
+    "shelljs": "^0.8.3",
+    "winston": "^3.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Assada/leprobot.git"
+  },
+  "keywords": [
+    "lepra",
+    "leprobot",
+    "kiev",
+    "telegram"
+  ],
+  "author": "Assada <assada.ua@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Assada/leprobot/issues"
+  },
+  "homepage": "https://github.com/Assada/leprobot#readme"
+}
