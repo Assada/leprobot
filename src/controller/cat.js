@@ -1,7 +1,7 @@
 "use strict";
 
-const request = require('request');
-const BaseController = cb_require('controller/base');
+const request = require('request'),
+    BaseController = cb_require('controller/base');
 
 class Cat extends BaseController {
     /**
@@ -58,7 +58,6 @@ class Cat extends BaseController {
         } catch (e) {
             this.logging.logger.error('[ERROR] (cat)', e);
         }
-
     }
 }
 

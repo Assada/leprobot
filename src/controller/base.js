@@ -9,6 +9,10 @@ class BaseController {
         this.bot = bot;
         this.logging = logging;
     }
+
+    getLogger() {
+        return this.logging;
+    }
 }
 
 module.exports = BaseController;

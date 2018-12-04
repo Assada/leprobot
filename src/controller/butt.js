@@ -1,30 +1,10 @@
-"use strict";
+'use strict';
 
 const request = require('request'),
-    randomPussy = require('random-vagina'),
+    randomAss = require('random-butt'),
     BaseController = cb_require('controller/base');
 
-class Pussy extends BaseController {
-    /**
-     * @param {TelegramBot} bot
-     * @param {Logging} logging
-     * @param {Random} randomizer
-     */
-    constructor(bot, logging, randomizer) {
-        super(bot, logging);
-        this.randomizer = randomizer;
-        this.labels = [
-            'Вот тебе котя!',
-            'Держи котю',
-            'Котя - топчик',
-            'СМОТРИ КАКОЙ ЗАБАВНЫЙ!',
-            'Всем котю!',
-            ':3',
-            'Ой! Какой милаш!',
-            'Котики, конечно, лучшие!'
-        ];
-    }
-
+class Butt extends BaseController {
     /**
      * @param {Object} msg
      */
@@ -33,7 +13,7 @@ class Pussy extends BaseController {
         const from = msg.from;
         const t = this;
 
-        console.debug('Received command \\pussy in ' + chat + ' from ' + from.username + '(' + from.id + ')');
+        console.debug('Received command \\butt in ' + chat + ' from ' + from.username + '(' + from.id + ')');
 
         const options = {
                 caption: t.randomizer.pick(t.labels),
@@ -43,13 +23,13 @@ class Pussy extends BaseController {
                 filename: 'cat'
             };
         try {
-            randomPussy()
+            randomAss()
                 .then(url => {
                     request.get(url, function (err, res, body) {
-                        t.bot.sendChatAction(chat, 'upload_photo');
+                        // t.bot.sendChatAction(chat, 'upload_photo');
                         fileOptions.contentType = res.headers['content-type'];
                         fileOptions.filename = this.uri.href;
-                        t.getLogger().logger.info(fileOptions);
+                        console.debug(fileOptions);
                         const photo = request(this.uri.href);
                         if (this.uri.href.indexOf('.gif') !== -1) {
                             t.bot.sendDocument(chat, photo, options, fileOptions)
@@ -59,9 +39,9 @@ class Pussy extends BaseController {
                     });
                 })
         } catch (e) {
-            this.getLogger().logging.logger.error('[ERROR] (pussy)', e);
+            this.logging.logger.error('[ERROR] (butt)', e);
         }
     }
 }
 
-module.exports = Pussy;
+module.exports = Butt;

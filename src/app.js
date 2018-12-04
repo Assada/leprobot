@@ -1,13 +1,14 @@
 'use strict';
 
+const TelegramBot = require('node-telegram-bot-api');
+
 const App = module.exports,
-    TelegramBot = require('node-telegram-bot-api'),
     optimist = require('optimist'),
     Info = cb_require('utils/info'),
     settings = require(__basedir + '/package.json'),
     Random = require("random-js");
 
-let Router = cb_require('router');
+const Router = cb_require('router');
 
 App.utils = cb_require('utils/utils');
 App.logging = cb_require('utils/logging');
@@ -15,6 +16,7 @@ App.logging = cb_require('utils/logging');
 App.run = function run(processArgv, processCwd) {
     require('dotenv').load({silent: true});
     this.cwd = processCwd || process.cwd();
+    this.logging.logger.level = process.env.LOG_LEVEL || 'error';
 
     try {
         let argv = optimist(processArgv.slice(2)).argv;

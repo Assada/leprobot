@@ -6,7 +6,7 @@ let Logging = module.exports,
 
 Logging.winston = winston;
 
-let messageFormat = winston.format.printf(function(info) {
+let messageFormat = winston.format.printf(function (info) {
     return info.message;
 });
 
@@ -68,7 +68,7 @@ Logging.queryLogs = function queryLogs(searchText, timestamp) {
     //
     // Find items logged between today and yesterday.
     //
-    winston.query(options, function(err, results) {
+    winston.query(options, function (err, results) {
         if (err) {
             throw err;
         }
@@ -93,7 +93,7 @@ Logging.setUpConsoleLoggingHelpers = function setUpConsoleLoggingHelpers() {
     });
 
     let consoleInfo = console.info;
-    console.info = function() {
+    console.info = function () {
         if (arguments.length === 1 && !arguments[0])
             return;
 
@@ -106,7 +106,7 @@ Logging.setUpConsoleLoggingHelpers = function setUpConsoleLoggingHelpers() {
     };
 
     let consoleError = console.error;
-    console.error = function() {
+    console.error = function () {
         if (arguments.length === 1 && !arguments[0])
             return;
 
@@ -119,7 +119,7 @@ Logging.setUpConsoleLoggingHelpers = function setUpConsoleLoggingHelpers() {
         consoleError.call(console, msg.red.bold);
     };
 
-    console.success = function() {
+    console.success = function () {
         if (arguments.length === 1 && !arguments[0])
             return;
 
@@ -129,6 +129,19 @@ Logging.setUpConsoleLoggingHelpers = function setUpConsoleLoggingHelpers() {
         }
 
         console.log(msg.green.bold);
+    };
+
+    let consoleDebug = console.debug;
+    console.debug = function () {
+        if (arguments.length === 1 && !arguments[0])
+            return;
+
+        let msg = ' 🔧';
+        for (let n in arguments) {
+            msg += ' ' + arguments[n];
+        }
+
+        consoleDebug.call(console, msg.gray.italic);
     };
 
     //Default level is set to 'info'

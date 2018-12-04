@@ -1,10 +1,12 @@
 'use strict';
 
-const MessageController = cb_require('controller/message');
-const CatController = cb_require('controller/cat');
-const WeatherController = cb_require('controller/weather');
-const RateController = cb_require('controller/rate');
-const BoobsController = cb_require('controller/boobs');
+const MessageController = cb_require('controller/message'); //OK
+const CatController = cb_require('controller/cat'); //OK
+const WeatherController = cb_require('controller/weather'); //OK
+const RateController = cb_require('controller/rate'); //OK
+const BoobsController = cb_require('controller/boobs'); //OK
+const ButtController = cb_require('controller/butt'); // ERROR
+const PussyController = cb_require('controller/pussy'); //ERROR
 
 class Router {
     /**
@@ -48,7 +50,12 @@ class Router {
         });
 
         this.bot.onText(/^\/pussy(?:\@.*?)?$/, (msg) => {
-            const controller = new BoobsController(this.bot, this.logger, this.randomizer);
+            const controller = new PussyController(this.bot, this.logger, this.randomizer);
+            controller.process(msg);
+        });
+
+        this.bot.onText(/^\/butt(?:\@.*?)?$/, (msg) => {
+            const controller = new ButtController(this.bot, this.logger);
             controller.process(msg);
         });
     }

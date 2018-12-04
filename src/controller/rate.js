@@ -22,7 +22,8 @@ class RateController extends BaseController {
                 '<b>EUR:</b> ' + EUR.bid + '/' + EUR.ask + '\n' +
                 '<b>RUB:</b> ' + RUB.bid + '/' + RUB.ask;
             t.bot.sendMessage(chat, message, {
-                parse_mode: 'HTML'
+                parse_mode: 'HTML',
+                reply_to_message_id: msg.message_id
             });
         });
     }
